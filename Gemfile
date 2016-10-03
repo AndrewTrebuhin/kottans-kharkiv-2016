@@ -4,6 +4,7 @@ ruby '2.3.0'
 
 gem 'sinatra', '1.4.7'
 gem 'data_mapper'
+gem 'attr_encrypted', '~> 3.0.0'
 
 group :production do
   gem 'pg'

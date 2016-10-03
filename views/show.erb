@@ -1,5 +1,11 @@
 <h2><%= @message.url %></h2>
-<p>Message:</p>
-<%= @message.body %>
+<p>
+  Encrypted message:<br>
+  <%= @message.encrypted_body %>
+</p>
+<p>
+  Decrypted message:<br>
+  <%= @message.body %>
+</p>
 <hr>
 <a href="/messages">All messages</a>
