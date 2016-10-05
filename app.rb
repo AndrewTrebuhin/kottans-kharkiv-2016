@@ -10,6 +10,8 @@ class Message
   include DataMapper::Resource
   property :id, Serial
   property :url, String, default: -> r, p { r.make_safe }
+  property :visits, Integer, default: 0
+  property :delete_after, Integer
   property :encrypted_body, Text
   property :encrypted_body_iv, Text
 
@@ -43,6 +45,17 @@ post '/messages/new' do
 end
 
 get '/message/:url' do
-  @message = Message.first(url: params[:url])
-  erb :'show'
+  if @message = Message.first(url: params[:url])
+    @message.visits += 1
+    @message.save
+    erb :'show'
+  else
+    'Message isn\'t found!'
+  end
+end
+
+after '/message/:url'  do
+  if @message
+    @message.destroy if @message.visits >= @message.delete_after
+  end
 end
