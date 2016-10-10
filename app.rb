@@ -3,6 +3,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'digest/md5'
 require 'attr_encrypted'
+require './env'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite:./db/base.db')
 
@@ -15,7 +16,7 @@ class Message
   property :encrypted_body, Text
   property :encrypted_body_iv, Text
 
-  attr_encrypted :body, key: 'You will never guess this secret!' # aes-256-gcm
+  attr_encrypted :body, key: ENV['SECRET_KEY'] # aes-256-gcm
 
   def make_safe
     Digest::MD5.hexdigest(Time.now.to_s + self.id.to_s + self.body)
