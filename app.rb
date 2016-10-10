@@ -3,7 +3,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'digest/md5'
 require 'attr_encrypted'
-require './env'
+require './env' if File.exists?('env.rb')
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite:./db/base.db')
 
