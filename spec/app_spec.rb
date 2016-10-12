@@ -9,7 +9,7 @@ describe "My Sinatra Application" do
   it 'should show messages page' do
     get '/messages'
 
-    expect(last_response.body).to include('<h1>All messages</h1>')
+    expect(last_response.body).to include('<h1>All messages (for test)</h1>')
   end
 
   it 'should show new message page' do

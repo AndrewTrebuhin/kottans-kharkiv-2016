@@ -1,4 +1,3 @@
 <h1>Your link:</h1>
-<a href="/message/<%= @message.url %>"><%= @message.url %></a>
+<a href="/message/<%= @message.url %>"><%= request.host + '/message/' + @message.url %></a>
 <hr>
-<a href="/messages">All messages</a>

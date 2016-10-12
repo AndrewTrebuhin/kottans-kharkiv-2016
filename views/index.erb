@@ -1,6 +1,6 @@
-<h1>All messages</h1>
+<h1>All messages (for test)</h1>
 <% @messages.each do |message| %>
-  <p><a href="/message/<%= message.url %>"><%= message.body %></a></p>
+  <p><a href="/message/<%= message.url %>"><%= message.url %></a></p>
 <% end %>
 <hr>
 <a href="/messages/new">Create a new message</a>
