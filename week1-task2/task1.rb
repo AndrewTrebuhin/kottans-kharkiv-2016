@@ -59,7 +59,32 @@ describe Ebuberable do
     expect(a).to eq 'first'
   end
 
-  #it '#reduce' do
-  #end
+  describe '#reduce' do
+
+    it 'sum of all numbers' do
+      a = MyClass.new(1, 2, 3, 4, 5).reduce(0) { |a, e| a + e }
+
+      expect(a).to eq 15
+    end
+
+    it "return accumulator if value wasn't provided" do
+      a = MyClass.new.reduce(20) { |a, e| a + e }
+
+      expect(a).to eq 20
+    end
+
+    it 'without a block' do
+      a = MyClass.new(1, 2, 3, 4, 5).reduce(0, :+)
+
+      expect(a).to eq 15
+    end
+
+    it 'without an init value' do
+      a = MyClass.new(1, 2, 3, 4, 5).reduce(:+)
+
+      expect(a).to eq 15
+    end
+
+  end
 
 end
