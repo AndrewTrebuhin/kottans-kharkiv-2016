@@ -43,7 +43,6 @@ module Ebuberable
   def first
     found = nil
     self.each do |element|
-      return element
       found = element
       break
     end
