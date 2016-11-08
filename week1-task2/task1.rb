@@ -87,4 +87,16 @@ describe Ebuberable do
 
   end
 
+  it '#max' do
+    a = MyClass.new(1, 2, 3).max
+
+    expect(a).to eq 3
+  end
+
+  it '#min' do
+    a = MyClass.new(3, 2, 1).min
+
+    expect(a).to eq 1
+  end
+
 end
