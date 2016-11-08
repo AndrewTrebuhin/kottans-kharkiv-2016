@@ -41,12 +41,8 @@ module Ebuberable
   end
 
   def first
-    found = nil
-    self.each do |element|
-      found = element
-      break
-    end
-    found
+    each { |element| return element }
+    nil
   end
 
   def reduce(accumulator = nil, operation = nil, &block)
