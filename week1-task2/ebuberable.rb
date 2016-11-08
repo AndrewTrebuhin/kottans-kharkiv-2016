@@ -2,7 +2,7 @@ module Ebuberable
 
   def map(&block)
     result = []
-    self.each do |element|
+    each do |element|
       result << block.call(element)
     end
     result
@@ -33,7 +33,7 @@ module Ebuberable
   end
 
   def all?(&block)
-    block ||= proc {|element| element}
+    block ||= :itself.to_proc
     self.each do |element|
       return false unless block.call(element)
     end
@@ -43,6 +43,7 @@ module Ebuberable
   def first
     found = nil
     self.each do |element|
+      return element
       found = element
       break
     end
