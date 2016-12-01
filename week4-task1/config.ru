@@ -1,7 +1,6 @@
 require "./app"
 
 use Rack::Reloader
+use Rack::ShowExceptions
 
-map '/' do
-  run NewMessage.new
-end
+run SDMessage::Rack.new
